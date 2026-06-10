@@ -1,0 +1,4 @@
+# How to get your current IPs quickly
+# On your laptop
+#curl ifconfig.me
+#admin_ip =" * * * */32"  (format: x.x.x.x/32)
