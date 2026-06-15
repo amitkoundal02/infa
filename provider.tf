@@ -1,6 +1,6 @@
 ######### Providers details #########
 terraform {
-  required_version = ">=1.5.0" ######### Terraform CLI version 
+  #required_version = ">=1.5.0" ######### Terraform CLI version 
 
   required_providers {
     aws = {
@@ -11,13 +11,13 @@ terraform {
   }
 
   ######### Details for HCP remote backend #########
-  backend "remote" {
-    organization = "my-tf-learning"
+  #  backend "remote" {
+  #  organization = "my-tf-learning"
 
-    workspaces {
-      name = "terraform-prod"
-    }
-  }
+  # workspaces {
+  #   name = "terraform-prod"
+  # }
+  # }
 }
 
 provider "aws" {

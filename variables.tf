@@ -24,3 +24,15 @@ variable "admin_ips" {
   description = "IPS allowed for SSH"
   type        = list(string)
 }
+
+variable "root_volume_size" {
+  description = "Root EBS volume size in GB"
+  type        = number
+  default     = 15
+}
+
+variable "root_volume_type" {
+  description = "Root EBS volume type"
+  type        = string
+  default     = "gp3"
+}

@@ -77,17 +77,17 @@ resource "aws_security_group" "web_app_alb" {
 
 resource "aws_security_group" "web_app_sg" {
   name        = "web_app_sg"
-  description = "Web Server Security Group" 
-  vpc_id = aws_vpc.web_app_vpc.id
+  description = "Web Server Security Group"
+  vpc_id      = aws_vpc.web_app_vpc.id
 
 
   ingress {
     description     = "SSH from bastion only"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.bastion_sg.id]
-    
+
   }
   ingress {
     description     = "HTTP from ALB only"
@@ -95,8 +95,8 @@ resource "aws_security_group" "web_app_sg" {
     to_port         = 80
     protocol        = "tcp"
     security_groups = [aws_security_group.web_app_alb.id]
-    
-    
+
+
   }
 
   ingress {
@@ -126,9 +126,9 @@ resource "aws_security_group" "web_app_db_sg" {
   vpc_id      = aws_vpc.web_app_vpc.id
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.bastion_sg.id]
   }
 
@@ -138,7 +138,7 @@ resource "aws_security_group" "web_app_db_sg" {
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.web_app_sg.id]
-    
+
   }
 
   egress {
@@ -161,10 +161,10 @@ resource "aws_security_group" "monitor_sg" {
   vpc_id = aws_vpc.web_app_vpc.id
 
   ingress {
-    description = "ssh use"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    description     = "ssh use"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.bastion_sg.id]
   }
 
