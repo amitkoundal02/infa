@@ -12,7 +12,7 @@ resource "aws_instance" "bastion" {
     volume_type = var.root_volume_type
   }
 
-  tags = { Name = "bastion", Role = "bastion" }
+  tags = { Name = "bastion", Role = "bastion", Project = "fullstack_webapp" }
 }
 
 resource "aws_instance" "web_LB" {
@@ -26,7 +26,7 @@ resource "aws_instance" "web_LB" {
     volume_size = var.root_volume_size
     volume_type = var.root_volume_type
   }
-  tags = { Name = "web_LB", Role = "LB" }
+  tags = { Name = "web_LB", Role = "LB", Project = "fullstack_webapp" }
 
 }
 
@@ -41,7 +41,7 @@ resource "aws_instance" "web_server_a" {
     volume_size = var.root_volume_size
     volume_type = var.root_volume_type
   }
-  tags = { Name = "web_server_a", Role = "webserver" }
+  tags = { Name = "web_server_a", Role = "webserver", Project = "fullstack_webapp" }
   #tags                   = { Name = "web_server_a_${count.index + 1}", Role = "webserver" }
 
 }
@@ -56,8 +56,8 @@ resource "aws_instance" "web_server_b" {
     volume_size = var.root_volume_size
     volume_type = var.root_volume_type
   }
-  tags = { Name = "web_server_b", Role = "webserver" }
-  #tags                   = { Name = "web_server_b_${count.index + 1}", Role = "webserver" }
+  tags = { Name = "web_server_b", Role = "webserver", Project = "fullstack_webapp" }
+  #tags                   = { Name = "web_server_b_${count.index + 1}", Role = "webserver" , Project = "fullstack_webapp" }
 }
 
 
@@ -72,7 +72,7 @@ resource "aws_instance" "DB" {
     volume_size = var.root_volume_size
     volume_type = var.root_volume_type
   }
-  tags = { Name = "web_DB", Role = "DB" }
+  tags = { Name = "web_DB", Role = "DB", Project = "fullstack_webapp" }
 
 }
 
@@ -89,7 +89,7 @@ resource "aws_instance" "monitor" {
     volume_type = var.root_volume_type
   }
 
-  tags = { Name = "web_monitor", Role = "monitor" }
+  tags = { Name = "web_monitor", Role = "monitor", Project = "fullstack_webapp" }
 
 }
 

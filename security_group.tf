@@ -61,6 +61,14 @@ resource "aws_security_group" "web_app_alb" {
     protocol    = "tcp"
     cidr_blocks = var.admin_ips # ["0.0.0.0/0"] or we can put our public ip for this check on internet as what is my ip
   }
+
+  ingress {
+    description     = "Node exporter metrics from monitor"
+    from_port       = 9100
+    to_port         = 9100
+    protocol        = "tcp"
+    security_groups = [aws_security_group.monitor_sg.id]
+  }
   egress {
     from_port   = 0
     to_port     = 0
@@ -106,6 +114,14 @@ resource "aws_security_group" "web_app_sg" {
     security_groups = [aws_security_group.web_app_alb.id]
   }
 
+  ingress {
+    description     = "Node exporter metrics from monitor"
+    from_port       = 9100
+    to_port         = 9100
+    protocol        = "tcp"
+    security_groups = [aws_security_group.monitor_sg.id]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -139,6 +155,14 @@ resource "aws_security_group" "web_app_db_sg" {
     protocol        = "tcp"
     security_groups = [aws_security_group.web_app_sg.id]
 
+  }
+
+  ingress {
+    description     = "Node exporter metrics from monitor"
+    from_port       = 9100
+    to_port         = 9100
+    protocol        = "tcp"
+    security_groups = [aws_security_group.monitor_sg.id]
   }
 
   egress {
