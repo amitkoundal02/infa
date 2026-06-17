@@ -1,5 +1,3 @@
-Full README for infra
-
 # Multi-Tier AWS Infrastructure — Terraform
 
 Terraform code that provisions a multi-AZ, 3-tier AWS environment for a
@@ -24,25 +22,6 @@ Companion repo (configuration management):
 - Least-privilege security groups — e.g. the web tier only accepts inbound
   traffic from the load balancer's security group, never from a raw IP range
   
-Internet
-
-|
-
-HAProxy (public) ---- Bastion (public)
-
-|                       |
-
-web1, web2 (private) ------+
-
-|
-
-MariaDB (private)
-
-|
-
-Monitor: Prometheus + Grafana (private)  
-
-
 ## Stack
 
 Terraform >= 1.5.0 · AWS provider ~> 6.0 · HCP Terraform (remote state backend)
